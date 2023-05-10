@@ -1,5 +1,8 @@
+import Fun.Owo;
 import Fun.PingPong;
 import Fun.Sarcasm;
+import Fun.Spam;
+import Games.League;
 import Utility.InviteBot;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDA;
@@ -18,7 +21,7 @@ import java.util.EventListener;
 public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[] { new SlashCommands(), new PingPong(), new InviteBot(),
-            new Sarcasm()
+            new Sarcasm(), new Owo(), new Spam(), new League()
     };
 
     public void start() {
