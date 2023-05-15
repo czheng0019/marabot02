@@ -1,4 +1,5 @@
-import ChannelLocked.RoleReactions;
+import Admin.Kick;
+import ChannelLocked.*;
 import Fun.Owo;
 import Fun.PingPong;
 import Fun.Sarcasm;
@@ -24,7 +25,8 @@ public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[] { new SlashCommands(), new PingPong(), new InviteBot(),
             new Sarcasm(), new Owo(), new Spam(), new League(), new RoleReactions(), new SkipCommand(), new StopCommand(),
-            new LoopingCommand(), new NowPlayingCommand(), new PlayCommand(), new QueueCommand(), new JoinLeave()
+            new LoopingCommand(), new NowPlayingCommand(), new PlayCommand(), new QueueCommand(), new JoinLeave(),
+            new WelcomeDeparture(), new Rules(), new ServerAccessQuestions(), new Quotes(), new Kick()
     };
 
     public void start() {
@@ -32,7 +34,8 @@ public class Bot {
         String discordToken = config.get("DISCORD_TOKEN");
         JDABuilder jdaBuilder = JDABuilder.createDefault(discordToken);
 
-        jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_MESSAGES);
+        jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.MESSAGE_CONTENT);
         jdaBuilder.addEventListeners(listenerAdapters);
         jdaBuilder.enableCache(CacheFlag.ACTIVITY);
         jdaBuilder.setChunkingFilter(ChunkingFilter.ALL);

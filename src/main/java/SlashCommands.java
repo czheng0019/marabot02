@@ -12,7 +12,17 @@ public class SlashCommands extends ListenerAdapter {
     public void onGuildReady(GuildReadyEvent e) {
         List<CommandData> commandData = new ArrayList<>();
 
+        //admin
+        commandData.add(Commands.slash("admin_kick", "kick member from the server")
+                .addOption(OptionType.STRING, "user", "mention the name"));
+        commandData.add(Commands.slash("admin_deny_access", "deny member access from server")
+                .addOption(OptionType.STRING, "user", "mention the name"));
+
         //channel locked
+        commandData.add(Commands.slash("bypass_for_league", "bypasses rules and gives decatf")
+                .addOption(OptionType.STRING, "user", "mention the name"));
+        commandData.add(Commands.slash("allow_in", "removes no access and gives potential member decatf")
+                .addOption(OptionType.STRING, "user", "mention the name"));
 
         //fun
         commandData.add(Commands.slash("ping", "pong"));
@@ -48,7 +58,7 @@ public class SlashCommands extends ListenerAdapter {
         commandData.add(Commands.slash("music_queue", "tracks in the queue")
                 .addOption(OptionType.STRING, "count", "how many tracks to output, if leave blank is 10"));
         commandData.add(Commands.slash("music_join", "ask marabot02 to join your channel"));
-        commandData.add(Commands.slash("music_play", "marabot02 leaves your channel"));
+        commandData.add(Commands.slash("music_leave", "marabot02 leaves your channel"));
 
         //utility
         commandData.add(Commands.slash("invite_bot", "provides url to invite bot"));

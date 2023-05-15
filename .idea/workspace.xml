@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8df1849c-93fe-41e0-af6e-b6c05cdc973b" name="Changes" comment="league, owo, spam">
+    <list default="true" id="8df1849c-93fe-41e0-af6e-b6c05cdc973b" name="Changes" comment="role reactions and music">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/RoleReactions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/AudioPlayerSendHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/GuildMusicManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/JoinLeave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/LoopingCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/NowPlayingCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/PlayCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/PlayerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/QueueCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/SkipCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/SpotifyAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/StopCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/TrackScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Music/YoutubeAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Admin/Kick.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/Quotes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/Rules.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/ServerAccessQuestions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/WelcomeDeparture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SlashCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SlashCommands.java" afterDir="false" />
@@ -103,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683750956239</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="role reactions and music">
+      <created>1684157078407</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684157078407</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -124,6 +122,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="marabot02 launch" />
     <MESSAGE value="league, owo, spam" />
-    <option name="LAST_COMMIT_MESSAGE" value="league, owo, spam" />
+    <MESSAGE value="role reactions and music" />
+    <option name="LAST_COMMIT_MESSAGE" value="role reactions and music" />
   </component>
 </project>
