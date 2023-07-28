@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.requests.restaction.MessageCreateAction;
+import net.dv8tion.jda.internal.requests.restaction.MessageCreateActionImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,7 @@ public class QueueCommand extends ListenerAdapter {
             OptionMapping count = e.getOption("count");
 
             if(count != null){
-                int num = count.getAsInt();
-                trackCount = num;
+                trackCount = count.getAsInt();
             }
 
             MessageCreateAction messageAction = e.getChannel().sendMessage("**Current Queue:**\n");
@@ -48,7 +48,7 @@ public class QueueCommand extends ListenerAdapter {
                                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(track.getDuration())),
                                 TimeUnit.MILLISECONDS.toSeconds(track.getDuration()) -
                                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(track.getDuration()))))
-                        .addContent("`]\n");
+                        .addContent("`]\n").queue();
             }
 
             messageAction.queue();

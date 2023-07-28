@@ -26,7 +26,7 @@ public class Bot {
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[] { new SlashCommands(), new PingPong(), new InviteBot(),
             new Sarcasm(), new Owo(), new Spam(), new League(), new RoleReactions(), new SkipCommand(), new StopCommand(),
             new LoopingCommand(), new NowPlayingCommand(), new PlayCommand(), new QueueCommand(), new JoinLeave(),
-            new WelcomeDeparture(), new Rules(), new ServerAccessQuestions(), new Quotes(), new Kick()
+            new WelcomeDeparture(), new Rules(), new ServerAccessQuestions(), new Quotes(), new Kick(), new ServerStats()
     };
 
     public void start() {

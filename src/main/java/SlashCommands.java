@@ -15,14 +15,15 @@ public class SlashCommands extends ListenerAdapter {
         //admin
         commandData.add(Commands.slash("admin_kick", "kick member from the server")
                 .addOption(OptionType.STRING, "user", "mention the name"));
-        commandData.add(Commands.slash("admin_deny_access", "deny member access from server")
-                .addOption(OptionType.STRING, "user", "mention the name"));
 
         //channel locked
         commandData.add(Commands.slash("bypass_for_league", "bypasses rules and gives decatf")
                 .addOption(OptionType.STRING, "user", "mention the name"));
         commandData.add(Commands.slash("allow_in", "removes no access and gives potential member decatf")
                 .addOption(OptionType.STRING, "user", "mention the name"));
+        commandData.add(Commands.slash("deny_access", "deny member access from server")
+                .addOption(OptionType.STRING, "user", "mention the name"));
+        commandData.add(Commands.slash("update_server_stats", "update server stats"));
 
         //fun
         commandData.add(Commands.slash("ping", "pong"));
@@ -31,6 +32,50 @@ public class SlashCommands extends ListenerAdapter {
         commandData.add(Commands.slash("spam", "@yuzu @yuzu @yuzu @yuzu @yuzu")
                 .addOption(OptionType.STRING, "name", "mention the person you're spamming"));
         commandData.add(Commands.slash("stop_spam", "spam this to stop"));
+
+        commandData.add(Commands.slash("gif_pat", "you pat someone")
+                .addOption(OptionType.STRING, "name", "mention someone to pat"));
+        commandData.add(Commands.slash("gif_nom", "you nom someone")
+                .addOption(OptionType.STRING, "name", "mention someone to nom"));
+        commandData.add(Commands.slash("gif_stare", "you stare at someone")
+                .addOption(OptionType.STRING, "name", "mention someone to stare at"));
+        commandData.add(Commands.slash("gif_punch", "you punch someone")
+                .addOption(OptionType.STRING, "name", "mention someone to punch"));
+        commandData.add(Commands.slash("gif_bonk", "you bonk someone")
+                .addOption(OptionType.STRING, "name", "mention someone to bonk"));
+        commandData.add(Commands.slash("gif_run", "you run from someone")
+                .addOption(OptionType.STRING, "name", "mention someone to run from"));
+        commandData.add(Commands.slash("gif_kill", "you kill someone")
+                .addOption(OptionType.STRING, "name", "mention someone to kill"));
+        commandData.add(Commands.slash("gif_glare", "you glare at someone")
+                .addOption(OptionType.STRING, "name", "mention someone to glare at"));
+        commandData.add(Commands.slash("gif_mok", "you mock someone")
+                .addOption(OptionType.STRING, "name", "mention someone to mock"));
+        commandData.add(Commands.slash("gif_hug", "you hug someone")
+                .addOption(OptionType.STRING, "name", "mention someone to hug"));
+        commandData.add(Commands.slash("gif_boop", "you boop someone")
+                .addOption(OptionType.STRING, "name", "mention someone to boop"));
+        commandData.add(Commands.slash("gif_wave", "you wave at someone")
+                .addOption(OptionType.STRING, "name", "mention someone to wave at"));
+
+        commandData.add(Commands.slash("gif_sad", "you are sad"));
+        commandData.add(Commands.slash("gif_blush", "you are blushing"));
+        commandData.add(Commands.slash("gif_confused", "you are confused"));
+        commandData.add(Commands.slash("gif_nico", "you are nico nico nii-ing"));
+        commandData.add(Commands.slash("gif_sleep", "you are sleeping"));
+        commandData.add(Commands.slash("gif_angy", "you are angy"));
+        commandData.add(Commands.slash("gif_smile", "you are smiling"));
+        commandData.add(Commands.slash("gif_smirk", "you are smirking"));
+        commandData.add(Commands.slash("gif_winks", "you are winking"));
+        commandData.add(Commands.slash("gif_shock", "you are shocked"));
+        commandData.add(Commands.slash("gif_laugh", "you are laughing"));
+        commandData.add(Commands.slash("gif_disgust", "you are disgusted"));
+        commandData.add(Commands.slash("gif_pout", "you are pouting"));
+        commandData.add(Commands.slash("gif_braindead", "you are brainded"));
+        commandData.add(Commands.slash("gif_decompose", "you are decomposing"));
+
+
+
 
         //league
         commandData.add(Commands.slash("league_match_history", "LoL match history")

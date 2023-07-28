@@ -37,6 +37,7 @@ public class Quotes extends ListenerAdapter {
 
     static List<Message> fetch;
     static boolean stars = false;
+    static int starsAlready = 2;
 
 
     public void onMessageReactionAdd(MessageReactionAddEvent e) {
@@ -45,12 +46,13 @@ public class Quotes extends ListenerAdapter {
 
         if (e.getEmoji().equals(Emoji.fromUnicode("\u2B50")) && e.retrieveMessage().complete().getReactions().get(0).getCount() >= 2) {
             System.out.println(e.retrieveMessage().complete().getReactions().get(0).getCount() + " stars");
+            starsAlready = e.retrieveMessage().complete().getReactions().get(0).getCount();
             stars = false;
             String messageId = e.getMessageId();
             int index = 0;
             fetch = e.getGuild().getTextChannelById(771796072803729418L).getHistory().retrievePast(10).complete();
             for (Message message : fetch) {
-                if ((!message.getEmbeds().isEmpty()) && message.getAuthor().getName().equals("MaraBot")) {
+                if ((!message.getEmbeds().isEmpty()) && message.getAuthor().getName().equals("marabot02")) {
                     if (message.getEmbeds().get(0).getFooter().getText().equals(messageId)) {
                         stars = true;
                         index = fetch.indexOf(message);
@@ -95,7 +97,7 @@ public class Quotes extends ListenerAdapter {
         String msgID = e.retrieveMessage().complete().getId();
         builder.setFooter(msgID);
         builder.setTimestamp(e.retrieveMessage().complete().getTimeCreated());
-        e.getGuild().getTextChannelById(771796072803729418L).sendMessage(":star:️ **2** <#" + e.retrieveMessage().complete().getChannel().getIdLong() + ">").addEmbeds(builder.build()).queue();
+        e.getGuild().getTextChannelById(771796072803729418L).sendMessage(":star:️ **" + starsAlready + "** <#" + e.retrieveMessage().complete().getChannel().getIdLong() + ">").addEmbeds(builder.build()).queue();
         //e.getChannel().sendMessage("⭐️  2 <#" + e.retrieveMessage().complete().getChannel().getIdLong() + ">").embed(builder.build()).queue();
     }
 

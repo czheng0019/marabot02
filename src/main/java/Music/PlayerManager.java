@@ -43,7 +43,6 @@ public class PlayerManager {
 
     public void loadAndPlay(TextChannel channel, String trackUrl){
         final GuildMusicManager musicManager = this.getMusicManager(channel.getGuild());
-
         this.audioPlayerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack track) {

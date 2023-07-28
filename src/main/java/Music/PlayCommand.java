@@ -26,17 +26,6 @@ public class PlayCommand extends ListenerAdapter {
 
     public void onSlashCommandInteraction(SlashCommandInteractionEvent e){
 
-//        org.apache.hc.core5.http.ParseException ex = new org.apache.hc.core5.http.ParseException();
-//        System.out.println(ex);
-//        try{
-//            spotifyAPI = new SpotifyAPI(shuffledTracks);
-//        } catch (ParseException ex){
-//            ex.printStackTrace();
-//        }
-
-
-        Member member = e.getMember();
-//        GuildVoiceState voiceState = member.getVoiceState();
         AudioManager manager = e.getGuild().getAudioManager();
         GuildMusicManager musicManager = PlayerManager.getInstance().getMusicManager(e.getGuild());
 
@@ -45,29 +34,9 @@ public class PlayCommand extends ListenerAdapter {
                 manager.openAudioConnection(e.getMember().getVoiceState().getChannel());
             }
 
-//            e.getChannel().sendMessage(link).queue();
-
-//            if(!e.getMessage().getContentRaw().contains("youtube") && !e.getMessage().getContentRaw().contains("spotify")){
-//                e.getChannel().sendMessage("this is not a youtube link").queue();
-//            } else if(e.getMessage().getContentRaw().contains("&") && e.getMessage().getContentRaw().contains("youtube")){
-//                link = e.getMessage().getContentRaw().substring(9, e.getMessage().getContentRaw().indexOf("&"));
-//            } else if (e.getMessage().getContentRaw().contains("youtube")){
-//                link = e.getMessage().getContentRaw().substring(9);
-//            } else if (e.getMessage().getContentRaw().contains("spotify")){
-//                link = e.getMessage().getContentRaw();
-//                spotifyId = getSpotifyId(link);
-////                System.out.println(spotifyId);
-//                shuffledTracks = SpotifyAPI.getShuffledTracks(spotifyId);
-////                System.out.println(shuffledTracks);
-//                videoIdList = YoutubeAPI.getYoutubeLink(shuffledTracks);
-//                System.out.println(videoIdList);
-//                link = "https://www.youtube.com/watch?v=" + videoIdList.get(0);
-//            } else {
-//                link = "https://www.youtube.com/watch?v=hmjAoI6qRM0";
-//            }
             OptionMapping given = e.getOption("link");
             String link;
-            if(given == null){
+            if(given != null){
                 String part = given.getAsString();
                 if(part.contains("spotify")){
                     spotifyId = getSpotifyId(part);
@@ -84,33 +53,11 @@ public class PlayCommand extends ListenerAdapter {
                 link = "https://www.youtube.com/watch?v=hmjAoI6qRM0";
             }
 
+            System.out.println(link);
             
             PlayerManager.getInstance()
                   .loadAndPlay(e.getChannel().asTextChannel(), link);
             musicManager.scheduler.repeat = false;
-
-//            String link = String.join(" ", e.getMessage().getContentRaw().substring(8));
-//
-//            if(!isUrl(link)){
-//                link = "ytsearch:" + link;
-//            }
-
-
-
-//                      .loadAndPlay(e.getChannel(), "https://www.youtube.com/watch?v=y1ofrzyv1Io"); //gymnoedie 10 hours
-
-//            if(!selfVoiceState.inVoiceChannel()){
-//                e.getChannel().sendMessage("im not in vc dummy").queue();
-//                return;
-//   }
-
-//            if(!memberVoiceState.getChannel().equals(selfVoiceState.getChannel())){
-//                e.getChannel().sendMessage("cant play music for u if we aint in same vc").queue();
-//            }
-
-
-
-//            .loadAndPlay(e.getChannel(), "https://www.youtube.com/watch?v=y1ofrzyv1Io"); //gymnoedie 10 hours
 
         }
 

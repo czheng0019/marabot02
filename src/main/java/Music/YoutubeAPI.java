@@ -33,6 +33,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.VideoListResponse;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.IOException;
 
@@ -44,8 +45,8 @@ public class YoutubeAPI {
 //    private static final Collection<String> SCOPES =
 //            Arrays.asList("https://www.googleapis.com/auth/youtube.force-ssl");
 
-    private static final String API_KEY = "AIzaSyCyDIWzCcqPOx3kQxuN5up2wiObCSZcukA";
-
+    static Dotenv config = Dotenv.configure().load();
+    static String API_KEY = config.get("YOUTUBE_TOKEN");
 
     public static YouTube getService() throws GeneralSecurityException, IOException {
         return new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {

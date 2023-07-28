@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="marabot02:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8df1849c-93fe-41e0-af6e-b6c05cdc973b" name="Changes" comment="role reactions and music">
+    <list default="true" id="8df1849c-93fe-41e0-af6e-b6c05cdc973b" name="Changes" comment="kick, server access (allow in, deny access), welcome messages (shorter time for msg, but everyone has to be approved, added a &quot;league&quot; role), rules, quotes">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Admin/Kick.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/Quotes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/Rules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/ServerAccessQuestions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/WelcomeDeparture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/ServerStats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Fun/GIFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChannelLocked/Quotes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/Quotes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChannelLocked/ServerAccessQuestions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ChannelLocked/ServerAccessQuestions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Music/PlayCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Music/PlayCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Music/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Music/PlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Music/QueueCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Music/QueueCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Music/TrackScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Music/TrackScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Music/YoutubeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Music/YoutubeAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SlashCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SlashCommands.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +42,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -59,10 +71,13 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.marabot02.jar">
     <configuration name="marabot02" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="marabot02" />
@@ -70,6 +85,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="marabot02.jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/marabot02_jar/marabot02.jar" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="marabot02:jar" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.marabot02" />
+      <item itemvalue="JAR Application.marabot02.jar" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -101,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684157078407</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="kick, server access (allow in, deny access), welcome messages (shorter time for msg, but everyone has to be approved, added a &quot;league&quot; role), rules, quotes">
+      <created>1684174948121</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684174948121</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -123,6 +159,7 @@
     <MESSAGE value="marabot02 launch" />
     <MESSAGE value="league, owo, spam" />
     <MESSAGE value="role reactions and music" />
-    <option name="LAST_COMMIT_MESSAGE" value="role reactions and music" />
+    <MESSAGE value="kick, server access (allow in, deny access), welcome messages (shorter time for msg, but everyone has to be approved, added a &quot;league&quot; role), rules, quotes" />
+    <option name="LAST_COMMIT_MESSAGE" value="kick, server access (allow in, deny access), welcome messages (shorter time for msg, but everyone has to be approved, added a &quot;league&quot; role), rules, quotes" />
   </component>
 </project>

@@ -54,7 +54,7 @@ public class ServerAccessQuestions extends ListenerAdapter {
             e.reply("<@" + memberID + ">, read and accept <#772657764799217695> to gain access to the rest of the server. also, go check out " +
                     "<#799745668246798348> to get some roles").queue();
         }
-        if(e.getName().equalsIgnoreCase("admin_deny_access")) {
+        if(e.getName().equalsIgnoreCase("deny_access")) {
             OptionMapping given = e.getOption("user");
             Long memberID = given.getMentions().getMembers().get(0).getIdLong();
 
