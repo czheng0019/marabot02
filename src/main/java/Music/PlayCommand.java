@@ -56,7 +56,7 @@ public class PlayCommand extends ListenerAdapter {
             System.out.println(link);
             
             PlayerManager.getInstance()
-                  .loadAndPlay(e.getChannel().asTextChannel(), link);
+                  .loadAndPlay(e.getChannel().asTextChannel(), link, e.getInteraction().getMember().getNickname());
             musicManager.scheduler.repeat = false;
 
         }

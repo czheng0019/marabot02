@@ -10,6 +10,7 @@ import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistRequest;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistsItemsRequest;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -17,8 +18,10 @@ import java.net.URI;
 import java.util.*;
 
 public class SpotifyAPI {
-    private static final String clientId = "aee093d392354e228fb470ca6b4590be";
-    private static final String clientSecret = "2afba10d24b54572afdc23ea8afff9bc";
+
+    static Dotenv config = Dotenv.configure().load();
+    static final String clientId = config.get("SPOTIFY_CLIENT_ID");
+    static final String clientSecret = config.get("SPOTIFY_CLIENT_SECRET");
     private static final URI redirectUri = SpotifyHttpManager.makeUri("https://example.com/redirect");
 
     public static ArrayList<String> shuffledTracks = new ArrayList<>();

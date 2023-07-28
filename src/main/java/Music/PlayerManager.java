@@ -41,14 +41,14 @@ public class PlayerManager {
         });
     }
 
-    public void loadAndPlay(TextChannel channel, String trackUrl){
+    public void loadAndPlay(TextChannel channel, String trackUrl, String user){
         final GuildMusicManager musicManager = this.getMusicManager(channel.getGuild());
         this.audioPlayerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack track) {
                 musicManager.scheduler.queue(track);
                 embedBuilder.clear();
-                embedBuilder.setTitle("Adding to the queue:")
+                embedBuilder.setTitle(user + " added to the queue:")
                         .setDescription("`" + track.getInfo().title + "`")
                         .addField("Author", track.getInfo().author, false)
                         .addField("Duration", String.format("%02d:%02d:%02d",
