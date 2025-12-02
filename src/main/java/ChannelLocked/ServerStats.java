@@ -24,26 +24,6 @@ public class ServerStats extends ListenerAdapter {
 
         final int[] stats = new int[5];
 
-//        if(e.getMessage().getContentRaw().equals(Constants.prefix + "createServerStats")){
-//            Category category = e.getGuild().getCategoryById(832271946678009866L);
-//            e.getGuild().loadMembers(i ->{
-//                if(i.getUser().isBot()){
-//                    bots.add(i.toString());
-//                }
-//            });
-//            e.getGuild().loadMembers().onSuccess(member -> {
-//                e.getGuild().createVoiceChannel("All Members: " + member.size(), category).queue();
-//                final int users = member.size() - bots.size();
-//                e.getGuild().createVoiceChannel("Members: " + users, category).queue();
-//                e.getGuild().createVoiceChannel("Bots: " + bots.size(), category).queue();
-//                e.getGuild().createVoiceChannel("Roles: " + e.getGuild().getRoles().size() + "/250", category).queue();
-//                e.getGuild().createVoiceChannel("Emojis: " + e.getGuild().getEmotes().size() + "/50", category).queue();
-//            });
-//
-//            //           e.getGuild().getVoiceChannelById(832313671950008372L).getManager().setName("Members: " + users, category).queue();
-//
-//        }
-
         if(e.getName().equalsIgnoreCase("update_server_stats")) {
             stats[0] = 0;
             final boolean[] change = {false};
@@ -92,39 +72,6 @@ public class ServerStats extends ListenerAdapter {
                     });
                 }
             }, 0, 10 * 60 * 1000); //144000 = 24 hours????
-
-
-//            start = System.currentTimeMillis();
-//            while(System.currentTimeMillis() - start < 10000){
-//
-//                e.getChannel().sendMessage("nya " + (System.currentTimeMillis() - start)).queue();
-//
-//                e.getGuild().loadMembers(i -> {
-//                    if (i.getUser().isBot() && (!list.contains(i.toString()))) {
-//                        list.add(i.toString());
-//                        e.getChannel().sendMessage("bot" + i).queue();
-//                    }
-//                });
-//                e.getGuild().loadMembers().onSuccess(member -> {
-//                    e.getGuild().getVoiceChannelById(834806762346381405L).getManager().setName("All Members: " + member.size()).queue();
-//                    final int users = member.size() - list.size();
-//                    e.getGuild().getVoiceChannelById(834806763588288553L).getManager().setName("Members: " + users).queue();
-//                    e.getGuild().getVoiceChannelById(834806764540002401L).getManager().setName("Bots: " + list.size()).queue();
-//                    e.getGuild().getVoiceChannelById(834806765312016405L).getManager().setName("Roles: " + e.getGuild().getRoles().size() + "/250").queue();
-//                    e.getGuild().getVoiceChannelById(834806766863777832L).getManager().setName("Emojis: " + e.getGuild().getEmotes().size() + "/50").queue();
-//                });
-//                if(System.currentTimeMillis() - start > 10000){
-//                    start = 0;
-//                }
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException interruptedException) {
-//                    interruptedException.printStackTrace();
-//                }
-//
-//
-//            }
-//
 
         }
 
