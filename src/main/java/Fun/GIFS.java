@@ -107,11 +107,6 @@ public class GIFS extends ListenerAdapter {
         EmbedBuilder builder = new EmbedBuilder();
         builder.setColor(color);
 
-//        if(e.getName().equals("generate")){
-//            builder.setImage("https://cdn.discordapp.com/attachments/793141509800460318/841528799140118528/C9535D1A-5677-43FB-BBF5-7987AB2D9D9E.gif");
-//            e.getChannel().sendMessage(builder.build()).queue();
-//        }
-
         if(e.getName().toLowerCase().startsWith("gif_pat")){
             createAction(e, patAction, patList, builder);
         } else if(e.getName().toLowerCase().startsWith("gif_nom")){
@@ -176,38 +171,23 @@ public class GIFS extends ListenerAdapter {
         r = rand.nextInt(xAction.length); rList = rand.nextInt(xList.length);
         OptionMapping opt = e.getOption("name");
         User mentionedUser = opt.getMentions().getUsers().get(0);
-//        String actionName = e.getName().substring(4, e.getName().indexOf(" ", 4));
 
         try{
             String actionName = e.getName().substring(4);
             if(e.getName().length() > (4 + actionName.length())){
-//            e.getChannel().sendMessage("length " + mentionedUser.getAsMention().length()).queue();
                 builder.setFooter(mentionedUser.getName() + " is being " + actionName);
             }
         } catch (StringIndexOutOfBoundsException ignored){ }
-//
-//        if(e.getName().length() > (4 + xAction[r].length())){
-//            String message = e.getName().substring(4 + xAction[r].length() + 1 + mentionedUser.getAsMention().length());
-//            builder.setFooter(message);
-//        }
+
         builder.setImage(xList[rList]);
         builder.setAuthor(e.getUser().getName() + " " + xAction[r], null, e.getUser().getAvatarUrl());
 
         e.getChannel().sendMessageEmbeds(builder.build()).queue();
 
     }
-//    public void createAction(MessageReceivedEvent e, String[] xAction, String[] xList, EmbedBuilder builder){
-//        r = rand.nextInt(xAction.length); rList = rand.nextInt(xList.length);
-//        User mentionedUser = e.getMessage().getMentionedUsers().get(0);
-//        builder.setImage(xList[rList]);
-//        builder.setAuthor(e.getAuthor().getName() + " " + xAction[r] + " " + mentionedUser.getName(), null, e.getAuthor().getAvatarUrl());
-//        e.getChannel().sendMessage(builder.build()).queue();
-//
-//    }
 
     public void createEmotion(SlashCommandInteraction e, String[] xAction, String[] xList, EmbedBuilder builder){
         r = rand.nextInt(xAction.length); rList = rand.nextInt(xList.length);
-        //String actionName = e.getName().substring(4, e.getName().indexOf(" ", 4));
         try{
             String actionName = e.getName().substring(4, e.getName().indexOf(" ", 4));
             if(e.getName().length() > (4 + actionName.length())){
@@ -221,12 +201,4 @@ public class GIFS extends ListenerAdapter {
         e.getChannel().sendMessageEmbeds(builder.build()).queue();
 
     }
-
-//    public void createEmotion(MessageReceivedEvent e, String[] xAction, String[] xList, EmbedBuilder builder){
-//        r = rand.nextInt(xAction.length); rList = rand.nextInt(xList.length);
-//        builder.setImage(xList[rList]);
-//        builder.setAuthor(e.getAuthor().getName() + " " + xAction[r], null, e.getAuthor().getAvatarUrl());
-//        e.getChannel().sendMessage(builder.build()).queue();
-//
-//    }
 }
