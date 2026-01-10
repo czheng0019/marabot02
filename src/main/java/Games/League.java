@@ -45,11 +45,10 @@ public class League extends ListenerAdapter {
             R4J league = new R4J(riotCreds);
             EmbedBuilder builder = new EmbedBuilder();
             builder.setColor(color);
-            int amount = 5;
             OptionMapping username = e.getOption("league_username");
             String user = username.getAsString();
             OptionMapping count = e.getOption("count");
-            amount = count.getAsInt();
+            int amount = (count != null) ? count.getAsInt() : 5;
 
             Summoner summoner = Summoner.byName(LeagueShard.NA1, user);
             MatchBuilder mb  = new MatchBuilder(summoner.getPlatform());

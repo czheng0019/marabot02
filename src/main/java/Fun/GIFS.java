@@ -174,7 +174,7 @@ public class GIFS extends ListenerAdapter {
 
         builder.setImage(xList[rList]);
         builder.setAuthor(e.getUser().getName() + " " + xAction[r] + " " + mentionedUser.getName(), null, e.getUser().getAvatarUrl());
-        builder.setFooter((note_opt == null) ? null : note_opt.getAsString());
+        builder.setFooter((note_opt != null) ? note_opt.getAsString() : null);
 
         e.reply(mentionedUser.getAsMention()).addEmbeds(builder.build()).queue();
     }
