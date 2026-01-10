@@ -29,51 +29,75 @@ public class SlashCommands extends ListenerAdapter {
         commandData.add(Commands.slash("ping", "pong"));
         commandData.add(Commands.slash("sarcasm", "hEhE HaHaS yOuR pReViOuS mEsSaGe"));
         commandData.add(Commands.slash("owo", "UwU owoify ywowuw pwevwiwowus mwesswawgwe! (^з^)-☆"));
-        commandData.add(Commands.slash("spam", "@yuzu @yuzu @yuzu @yuzu @yuzu")
-                .addOption(OptionType.STRING, "name", "mention the person you're spamming"));
         commandData.add(Commands.slash("stop_spam", "spam this to stop"));
 
         commandData.add(Commands.slash("gif_pat", "you pat someone")
-                .addOption(OptionType.STRING, "name", "mention someone to pat"));
+                .addOption(OptionType.STRING, "name", "mention someone to pat")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_nom", "you nom someone")
-                .addOption(OptionType.STRING, "name", "mention someone to nom"));
+                .addOption(OptionType.STRING, "name", "mention someone to nom")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_stare", "you stare at someone")
-                .addOption(OptionType.STRING, "name", "mention someone to stare at"));
+                .addOption(OptionType.STRING, "name", "mention someone to stare at")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_punch", "you punch someone")
-                .addOption(OptionType.STRING, "name", "mention someone to punch"));
+                .addOption(OptionType.STRING, "name", "mention someone to punch")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_bonk", "you bonk someone")
-                .addOption(OptionType.STRING, "name", "mention someone to bonk"));
+                .addOption(OptionType.STRING, "name", "mention someone to bonk")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_run", "you run from someone")
-                .addOption(OptionType.STRING, "name", "mention someone to run from"));
+                .addOption(OptionType.STRING, "name", "mention someone to run from")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_kill", "you kill someone")
-                .addOption(OptionType.STRING, "name", "mention someone to kill"));
+                .addOption(OptionType.STRING, "name", "mention someone to kill")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_glare", "you glare at someone")
-                .addOption(OptionType.STRING, "name", "mention someone to glare at"));
+                .addOption(OptionType.STRING, "name", "mention someone to glare at")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_mok", "you mock someone")
-                .addOption(OptionType.STRING, "name", "mention someone to mock"));
+                .addOption(OptionType.STRING, "name", "mention someone to mock")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_hug", "you hug someone")
-                .addOption(OptionType.STRING, "name", "mention someone to hug"));
+                .addOption(OptionType.STRING, "name", "mention someone to hug")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_boop", "you boop someone")
-                .addOption(OptionType.STRING, "name", "mention someone to boop"));
+                .addOption(OptionType.STRING, "name", "mention someone to boop")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_wave", "you wave at someone")
-                .addOption(OptionType.STRING, "name", "mention someone to wave at"));
+                .addOption(OptionType.STRING, "name", "mention someone to wave at")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
 
-        commandData.add(Commands.slash("gif_sad", "you are sad"));
-        commandData.add(Commands.slash("gif_blush", "you are blushing"));
-        commandData.add(Commands.slash("gif_confused", "you are confused"));
-        commandData.add(Commands.slash("gif_nico", "you are nico nico nii-ing"));
-        commandData.add(Commands.slash("gif_sleep", "you are sleeping"));
-        commandData.add(Commands.slash("gif_angy", "you are angy"));
-        commandData.add(Commands.slash("gif_smile", "you are smiling"));
-        commandData.add(Commands.slash("gif_smirk", "you are smirking"));
-        commandData.add(Commands.slash("gif_winks", "you are winking"));
-        commandData.add(Commands.slash("gif_shock", "you are shocked"));
-        commandData.add(Commands.slash("gif_laugh", "you are laughing"));
-        commandData.add(Commands.slash("gif_disgust", "you are disgusted"));
-        commandData.add(Commands.slash("gif_pout", "you are pouting"));
-        commandData.add(Commands.slash("gif_braindead", "you are brainded"));
-        commandData.add(Commands.slash("gif_decompose", "you are decomposing"));
-
+        commandData.add(Commands.slash("gif_sad", "you are sad")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_blush", "you are blushing")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_confused", "you are confused")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_nico", "you are nico nico nii-ing")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_sleep", "you are sleeping")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_angy", "you are angy")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_smile", "you are smiling")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_smirk", "you are smirking")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_winks", "you are winking")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_shock", "you are shocked")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_laugh", "you are laughing")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_disgust", "you are disgusted")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_pout", "you are pouting")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_braindead", "you are brainded")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
+        commandData.add(Commands.slash("gif_decompose", "you are decomposing")
+                .addOption(OptionType.STRING, "note", "reason or anything else"));
 
 
 

@@ -1,9 +1,9 @@
 import Admin.Kick;
 import ChannelLocked.*;
+import Fun.GIFS;
 import Fun.Owo;
 import Fun.PingPong;
 import Fun.Sarcasm;
-import Fun.Spam;
 import Games.League;
 import Music.*;
 import Utility.InviteBot;
@@ -11,7 +11,9 @@ import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
@@ -24,9 +26,9 @@ import java.util.EventListener;
 public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[] { new SlashCommands(), new PingPong(), new InviteBot(),
-            new Sarcasm(), new Owo(), new Spam(), new League(), new RoleReactions(), new SkipCommand(), new StopCommand(),
+            new Sarcasm(), new Owo(), new GIFS(), new League(), new RoleReactions(), new SkipCommand(), new StopCommand(),
             new LoopingCommand(), new NowPlayingCommand(), new PlayCommand(), new QueueCommand(), new JoinLeave(),
-            new WelcomeDeparture(), new Rules(), new ServerAccessQuestions(), new Quotes(), new Kick(), new ServerStats()
+            new WelcomeDeparture(), new Rules(), new Quotes(), new Kick(), new ServerStats()
     };
 
     public void start() {

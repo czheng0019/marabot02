@@ -2,6 +2,7 @@ package Fun;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
@@ -51,7 +52,7 @@ public class GIFS extends ListenerAdapter {
     String[] boopList = {"https://cdn.weeb.sh/images/SyJzRTKFW.gif", "https://i.pinimg.com/originals/b4/95/fb/b495fb19f4b9a1b04f48297b676c497b.gif", "https://media.tenor.com/images/2ff785b647ef22f7110b3b2599e4c847/tenor.gif", "https://imgur.com/787H2cR.gif", "https://cdn.weeb.sh/images/HkxwlkKPb.gif", "https://cdn.weeb.sh/images/SyQzRaFFb.gif", "https://cdn.weeb.sh/images/BkcSekKwb.gif", "https://cdn.weeb.sh/images/rktSlkKvb.gif", "https://cdn.weeb.sh/images/rkaUe1YPb.gif", "https://cdn.weeb.sh/images/HkjjLb0rM.gif"};
 
     String[] waveAction = {"waves at"};
-    String[] waveList = {"https://i.pinimg.com/originals/05/6c/58/056c584d9335fcabf080ca43e583e3c4.gif", "https://media3.giphy.com/media/3oz8xTAJIQD6JWfTUc/giphy.gif", "https://imgur.com/CK3cqde.gif", "https://imgur.com/u2Z87a4.gif", "https://media.tenor.com/images/33ee3367675a99d39888a7ad273e0291/tenor.gif", "https://pa1.narvii.com/7313/68e5969b157afc37d08daa0ce0b38d87db392916r1-480-268_hq.gif", "https://aws1.discourse-cdn.com/wanikanicommunity/original/4X/b/d/8/bd8a72cf36b65e9531511adaa45de575808e2586.gif", "https://media.tenor.com/images/4b9b18c7aae49b108354a22a0cb615fc/tenor.gif", "https://media.tenor.com/images/454cae3260426b7357adee5ed07c7aee/tenor.gif", "https://media.tenor.com/images/5167f63c4c01e29abb68832927f8a067/tenor.gif", "https://imgur.com/TMaBtNt.gif", "https://media.tenor.com/images/7a406ffe8f3e32f53386057948d84b7a/tenor.gif", "https://media.tenor.com/images/8d1df7d9334186c5336650d83a7aa1cd/tenor.gif"};
+    String[] waveList = {"https://i.pinimg.com/originals/05/6c/58/056c584d9335fcabf080ca43e583e3c4.gif", "https://media3.giphy.com/media/3oz8xTAJIQD6JWfTUc/giphy.gif", "https://imgur.com/CK3cqde.gif", "https://imgur.com/u2Z87a4.gif", "https://media.tenor.com/images/33ee3367675a99d39888a7ad273e0291/tenor.gif", "https://aws1.discourse-cdn.com/wanikanicommunity/original/4X/b/d/8/bd8a72cf36b65e9531511adaa45de575808e2586.gif", "https://media.tenor.com/images/4b9b18c7aae49b108354a22a0cb615fc/tenor.gif", "https://media.tenor.com/images/454cae3260426b7357adee5ed07c7aee/tenor.gif", "https://media.tenor.com/images/5167f63c4c01e29abb68832927f8a067/tenor.gif", "https://imgur.com/TMaBtNt.gif", "https://media.tenor.com/images/7a406ffe8f3e32f53386057948d84b7a/tenor.gif", "https://media.tenor.com/images/8d1df7d9334186c5336650d83a7aa1cd/tenor.gif"};
 
 
 
@@ -101,9 +102,7 @@ public class GIFS extends ListenerAdapter {
     String[] decomposeList = {"https://media3.giphy.com/media/iQ23jO6ItXO12/giphy.gif", "https://c.tenor.com/y0dPmn6pPF8AAAAC/crying-dying.gif"};
 
 
-
-
-    public void onSlashCommandInteraction(SlashCommandInteraction e){
+    public void onSlashCommandInteraction (SlashCommandInteractionEvent e){
         EmbedBuilder builder = new EmbedBuilder();
         builder.setColor(color);
 
@@ -169,36 +168,26 @@ public class GIFS extends ListenerAdapter {
 
     public void createAction(SlashCommandInteraction e, String[] xAction, String[] xList, EmbedBuilder builder){
         r = rand.nextInt(xAction.length); rList = rand.nextInt(xList.length);
-        OptionMapping opt = e.getOption("name");
-        User mentionedUser = opt.getMentions().getUsers().get(0);
-
-        try{
-            String actionName = e.getName().substring(4);
-            if(e.getName().length() > (4 + actionName.length())){
-                builder.setFooter(mentionedUser.getName() + " is being " + actionName);
-            }
-        } catch (StringIndexOutOfBoundsException ignored){ }
+        OptionMapping name_opt = e.getOption("name");
+        OptionMapping note_opt = e.getOption("note");
+        User mentionedUser = name_opt.getMentions().getUsers().get(0);  
 
         builder.setImage(xList[rList]);
-        builder.setAuthor(e.getUser().getName() + " " + xAction[r], null, e.getUser().getAvatarUrl());
+        builder.setAuthor(e.getUser().getName() + " " + xAction[r] + " " + mentionedUser.getName(), null, e.getUser().getAvatarUrl());
+        builder.setFooter((note_opt == null) ? null : note_opt.getAsString());
 
-        e.getChannel().sendMessageEmbeds(builder.build()).queue();
+        e.replyEmbeds(builder.build()).queue();
 
     }
 
     public void createEmotion(SlashCommandInteraction e, String[] xAction, String[] xList, EmbedBuilder builder){
         r = rand.nextInt(xAction.length); rList = rand.nextInt(xList.length);
-        try{
-            String actionName = e.getName().substring(4, e.getName().indexOf(" ", 4));
-            if(e.getName().length() > (4 + actionName.length())){
-                String message = e.getName().substring(4 + actionName.length());
-                builder.setFooter(message);
-            }
-        } catch (StringIndexOutOfBoundsException ignored){ }
+        OptionMapping note_opt = e.getOption("note");
 
         builder.setImage(xList[rList]);
         builder.setAuthor(e.getUser().getName() + " " + xAction[r], null, e.getUser().getAvatarUrl());
-        e.getChannel().sendMessageEmbeds(builder.build()).queue();
+        builder.setFooter((note_opt == null) ? null : note_opt.getAsString());
 
+        e.replyEmbeds(builder.build()).queue();
     }
 }
