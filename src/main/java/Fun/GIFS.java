@@ -176,8 +176,7 @@ public class GIFS extends ListenerAdapter {
         builder.setAuthor(e.getUser().getName() + " " + xAction[r] + " " + mentionedUser.getName(), null, e.getUser().getAvatarUrl());
         builder.setFooter((note_opt == null) ? null : note_opt.getAsString());
 
-        e.replyEmbeds(builder.build()).queue();
-
+        e.reply(mentionedUser.getAsMention()).addEmbeds(builder.build()).queue();
     }
 
     public void createEmotion(SlashCommandInteraction e, String[] xAction, String[] xList, EmbedBuilder builder){
