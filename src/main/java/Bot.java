@@ -26,9 +26,12 @@ import java.util.EventListener;
 public class Bot {
 
     ListenerAdapter[] listenerAdapters = new ListenerAdapter[] { new SlashCommands(), new PingPong(), new InviteBot(),
-            new Sarcasm(), new Owo(), new GIFS(), new League(), new RoleReactions(), new SkipCommand(), new StopCommand(),
+            new Sarcasm(), new Owo(), new GIFS(), new RoleReactions(), new SkipCommand(), new StopCommand(),
             new LoopingCommand(), new NowPlayingCommand(), new PlayCommand(), new QueueCommand(), new JoinLeave(),
             new WelcomeDeparture(), new Rules(), new Quotes(), new Kick(), new ServerStats()
+            /* give up on these for now 
+                new League(), 
+            */
     };
 
     public void start() {

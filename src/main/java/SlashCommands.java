@@ -14,15 +14,9 @@ public class SlashCommands extends ListenerAdapter {
 
         //admin
         commandData.add(Commands.slash("admin_kick", "kick member from the server")
-                .addOption(OptionType.STRING, "user", "mention the name"));
+                .addOption(OptionType.STRING, "user", "mention the name", true));
 
         //channel locked
-        commandData.add(Commands.slash("bypass_for_league", "bypasses rules and gives decatf")
-                .addOption(OptionType.STRING, "user", "mention the name"));
-        commandData.add(Commands.slash("allow_in", "removes no access and gives potential member decatf")
-                .addOption(OptionType.STRING, "user", "mention the name"));
-        commandData.add(Commands.slash("deny_access", "deny member access from server")
-                .addOption(OptionType.STRING, "user", "mention the name"));
         commandData.add(Commands.slash("update_server_stats", "update server stats"));
 
         //fun
@@ -32,40 +26,40 @@ public class SlashCommands extends ListenerAdapter {
         commandData.add(Commands.slash("stop_spam", "spam this to stop"));
 
         commandData.add(Commands.slash("gif_pat", "you pat someone")
-                .addOption(OptionType.STRING, "name", "mention someone to pat")
+                .addOption(OptionType.STRING, "name", "mention someone to pat", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_nom", "you nom someone")
-                .addOption(OptionType.STRING, "name", "mention someone to nom")
+                .addOption(OptionType.STRING, "name", "mention someone to nom", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_stare", "you stare at someone")
-                .addOption(OptionType.STRING, "name", "mention someone to stare at")
+                .addOption(OptionType.STRING, "name", "mention someone to stare at", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_punch", "you punch someone")
-                .addOption(OptionType.STRING, "name", "mention someone to punch")
+                .addOption(OptionType.STRING, "name", "mention someone to punch", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_bonk", "you bonk someone")
-                .addOption(OptionType.STRING, "name", "mention someone to bonk")
+                .addOption(OptionType.STRING, "name", "mention someone to bonk", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_run", "you run from someone")
-                .addOption(OptionType.STRING, "name", "mention someone to run from")
+                .addOption(OptionType.STRING, "name", "mention someone to run from", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_kill", "you kill someone")
-                .addOption(OptionType.STRING, "name", "mention someone to kill")
+                .addOption(OptionType.STRING, "name", "mention someone to kill", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_glare", "you glare at someone")
-                .addOption(OptionType.STRING, "name", "mention someone to glare at")
+                .addOption(OptionType.STRING, "name", "mention someone to glare at", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_mok", "you mock someone")
-                .addOption(OptionType.STRING, "name", "mention someone to mock")
+                .addOption(OptionType.STRING, "name", "mention someone to mock", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_hug", "you hug someone")
-                .addOption(OptionType.STRING, "name", "mention someone to hug")
+                .addOption(OptionType.STRING, "name", "mention someone to hug", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_boop", "you boop someone")
-                .addOption(OptionType.STRING, "name", "mention someone to boop")
+                .addOption(OptionType.STRING, "name", "mention someone to boop", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
         commandData.add(Commands.slash("gif_wave", "you wave at someone")
-                .addOption(OptionType.STRING, "name", "mention someone to wave at")
+                .addOption(OptionType.STRING, "name", "mention someone to wave at", true)
                 .addOption(OptionType.STRING, "note", "reason or anything else"));
 
         commandData.add(Commands.slash("gif_sad", "you are sad")
@@ -102,20 +96,22 @@ public class SlashCommands extends ListenerAdapter {
 
 
         //league
+        commandData.add(Commands.slash("league_test", "LoL test")
+                .addOption(OptionType.STRING, "league_username", "league summoner name", true));
         commandData.add(Commands.slash("league_match_history", "LoL match history")
-                .addOption(OptionType.STRING, "league_username", "league summoner name")
+                .addOption(OptionType.STRING, "league_username", "league summoner name", true)
                 .addOption(OptionType.INTEGER, "count", "how many games"));
         commandData.add(Commands.slash("league_match_history_ranked", "LoL ranked match history")
-                .addOption(OptionType.STRING, "league_username", "league summoner name")
+                .addOption(OptionType.STRING, "league_username", "league summoner name", true)
                 .addOption(OptionType.INTEGER, "count", "how many games"));
         commandData.add(Commands.slash("league_match_history_game", "LoL specifics of one game")
-                .addOption(OptionType.STRING, "league_username", "league summoner name")
+                .addOption(OptionType.STRING, "league_username", "league summoner name", true)
                 .addOption(OptionType.INTEGER, "count", "how many games from most recent"));
         commandData.add(Commands.slash("league_rank", "LoL rank")
-                .addOption(OptionType.STRING, "league_username", "league summoner name"));
+                .addOption(OptionType.STRING, "league_username", "league summoner name", true));
         commandData.add(Commands.slash("league_champion_mastery", "LoL champion mastery")
-                .addOption(OptionType.STRING, "league_username", "league summoner name")
-                .addOption(OptionType.STRING, "champion", "any champion"));
+                .addOption(OptionType.STRING, "league_username", "league summoner name", true)
+                .addOption(OptionType.STRING, "champion", "any champion", true));
 
         //music
         commandData.add(Commands.slash("music_stop", "clear the queue"));
@@ -123,7 +119,7 @@ public class SlashCommands extends ListenerAdapter {
         commandData.add(Commands.slash("music_loop", "loop the queue"));
         commandData.add(Commands.slash("music_now_playing", "description of current song"));
         commandData.add(Commands.slash("music_play", "play a song")
-                .addOption(OptionType.STRING, "link", "youtube or spotify playlist"));
+                .addOption(OptionType.STRING, "link", "youtube or spotify playlist", true));
         commandData.add(Commands.slash("music_queue", "tracks in the queue")
                 .addOption(OptionType.STRING, "count", "how many tracks to output, if leave blank is 10"));
         commandData.add(Commands.slash("music_join", "ask marabot02 to join your channel"));

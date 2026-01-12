@@ -41,6 +41,13 @@ public class League extends ListenerAdapter {
         String riotToken = config.get("RIOT_TOKEN");
         APICredentials riotCreds = new APICredentials(riotToken);
 
+        if (e.getName().equalsIgnoreCase("league_test")) {
+            R4J league = new R4J(riotCreds);
+            OptionMapping username = e.getOption("league_username");
+            Summoner summoner = Summoner.byName(LeagueShard.NA1, username.getAsString());
+            e.reply(summoner.getName()).queue();
+        }
+
         if(e.getName().equalsIgnoreCase("league_match_history") || e.getName().equalsIgnoreCase("league_match_history_ranked")){
             R4J league = new R4J(riotCreds);
             EmbedBuilder builder = new EmbedBuilder();
@@ -82,18 +89,17 @@ public class League extends ListenerAdapter {
                     }
                 }
             }
-            e.getChannel().sendMessageEmbeds(builder.build()).queue();
+            e.replyEmbeds(builder.build()).queue();
         }
 
         if(e.getName().equalsIgnoreCase("league_match_history_game")){
-            //|| e.getMessage().getContentRaw().startsWith(Constants.prefix + "mhr ") || e.getMessage().getContentRaw().startsWith(Constants.prefix + "matchHistoryRanked ")) {
             R4J league = new R4J(riotCreds);
             EmbedBuilder builder = new EmbedBuilder();
             builder.setColor(color);
             OptionMapping username = e.getOption("league_username");
             String user = username.getAsString();
             OptionMapping count = e.getOption("count");
-            int game = count.getAsInt(), done = 0, roleI = 0, length = 0;
+            int game = (count != null) ? count.getAsInt() : 1, done = 0, roleI = 0, length = 0;
             boolean blue = true;
             Summoner summoner = Summoner.byName(LeagueShard.NA1, user.toString());
             MatchBuilder mb  = new MatchBuilder(summoner.getPlatform());
@@ -159,10 +165,8 @@ public class League extends ListenerAdapter {
                     roleI++;
                 }
             }
-//            if(done == 10){
             builder.addField(title, desp, false);
-            e.getChannel().sendMessageEmbeds(builder.build()).queue();
-//            }
+            e.replyEmbeds(builder.build()).queue();
 
         }
 
@@ -200,7 +204,7 @@ public class League extends ListenerAdapter {
             if(builder.getFields().size() == 0){
                 builder.addField("Unranked", win + " Wins - " + loss + " Losses | " + lp + " LP", false);
             }
-            e.getChannel().sendMessageEmbeds(builder.build()).queue();
+            e.replyEmbeds(builder.build()).queue();
         }
 
         if(e.getName().equalsIgnoreCase("league_champion_mastery")) {
@@ -209,24 +213,21 @@ public class League extends ListenerAdapter {
             OptionMapping username = e.getOption("league_username");
             String user = username.getAsString();
             OptionMapping champ = e.getOption("champion");
-            ArrayList<String> champions = new ArrayList<>();
-            champions.add(champ.getAsString());
+            String champion = champ.getAsString();
             int level, points;
             Summoner summoner = Summoner.byName(LeagueShard.NA1, user);
             NumberFormat numberFormat = NumberFormat.getInstance();
             int profIcon = summoner.getProfileIconId();
             builder.setColor(color);
             builder.setAuthor(summoner.getName(), "https://na.op.gg/summoner/userName=" + user, "http://ddragon.leagueoflegends.com/cdn/"+ league.getDDragonAPI().getVersions().get(0) + "/img/profileicon/" + profIcon + ".png");
-            for(String champion : champions){
-                for(StaticChampion staticChampion :  league.getDDragonAPI().getChampions().values()){
-                    if(staticChampion.getName().equalsIgnoreCase(champion)){
-                        level = summoner.getChampionMastery(staticChampion.getId()).getChampionLevel();
-                        points = summoner.getChampionMastery(staticChampion.getId()).getChampionPoints();
-                        builder.addField(staticChampion.getName(), masteryEmote(level) + " Mastery " + level + " | Points " + numberFormat.format(points), false);
-                    }
+            for(StaticChampion staticChampion :  league.getDDragonAPI().getChampions().values()){
+                if(staticChampion.getName().equalsIgnoreCase(champion)){
+                    level = summoner.getChampionMastery(staticChampion.getId()).getChampionLevel();
+                    points = summoner.getChampionMastery(staticChampion.getId()).getChampionPoints();
+                    builder.addField(staticChampion.getName(), masteryEmote(level) + " Mastery " + level + " | Points " + numberFormat.format(points), false);
                 }
             }
-            e.getChannel().sendMessageEmbeds(builder.build()).queue();
+            e.replyEmbeds(builder.build()).queue();
         }
     }
 
@@ -276,7 +277,6 @@ public class League extends ListenerAdapter {
     public String getTime(ZonedDateTime time){
         LocalDateTime localDate = time.toLocalDateTime();
         Date date = Date.from(localDate.atZone(ZoneId.of("UTC")).toInstant());
-        System.out.println(date + " " + Humanize.naturalTime(date));
         return Humanize.naturalTime(date);
     }
 
