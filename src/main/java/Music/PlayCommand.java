@@ -56,9 +56,10 @@ public class PlayCommand extends ListenerAdapter {
             System.out.println(link);
             
             PlayerManager.getInstance()
-                  .loadAndPlay(e.getChannel().asTextChannel(), link, e.getInteraction().getMember().getNickname());
+                  .loadAndPlay(e.getChannel().asTextChannel(), link, e.getMember().getEffectiveName(), embed -> {
+                    e.replyEmbeds(embed.build()).queue();
+                  });
             musicManager.scheduler.repeat = false;
-
         }
 
     }
@@ -79,35 +80,4 @@ public class PlayCommand extends ListenerAdapter {
             return null;
         }
     }
-
-//    public void onGuildVoiceJoin(GuildVoiceJoinEvent e){
-//        AudioManager manager = e.getGuild().getAudioManager();
-//        if(e.getChannelJoined().equals(manager.getConnectedChannel())){
-//        }
-//    }
-//    public void onGuildVoiceLeave(GuildVoiceLeaveEvent e){
-//        AudioManager manager = e.getGuild().getAudioManager();
-//        if(e.getChannelLeft().equals(manager.getConnectedChannel())){
-//        }
-//    }
-
-
-    //            String[] parts = e.getMessage().getContentRaw().split(" ");
-//            System.out.println(parts);
-//            String link = getName().join(" ", musicTest.getArgs());
-//            System.out.println(musicTest.getArgs());
-//            if(musicTest.getArgs() == null){
-//                e.getChannel().sendMessage("args is null again, u stupid mara");
-//                return;
-//            }
-//            if(!isUrl(link)){
-//                link = "ytsearch:" + link;
-//            }
-
-//    public String getName(){
-//        return Constants.prefix + "play";
-//    }
-//    public List<String> getArgs(){
-//        return this.args;
-//    }
 }

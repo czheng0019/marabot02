@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
@@ -32,16 +33,11 @@ public class PlayerManager {
     }
 
     public GuildMusicManager getMusicManager(Guild guild){
-        return this.musicManager.computeIfAbsent(guild.getIdLong(), (guildId) -> {
-            final GuildMusicManager guildMusicManager = new GuildMusicManager(this.audioPlayerManager);
-
-            guild.getAudioManager().setSendingHandler(guildMusicManager.getSendHandler());
-
-            return guildMusicManager;
-        });
+        return this.musicManager.computeIfAbsent(guild.getIdLong(), (guildId) -> 
+            new GuildMusicManager(audioPlayerManager, guild));
     }
 
-    public void loadAndPlay(TextChannel channel, String trackUrl, String user){
+    public void loadAndPlay(TextChannel channel, String trackUrl, String user, Consumer<EmbedBuilder> embedConsumer){
         final GuildMusicManager musicManager = this.getMusicManager(channel.getGuild());
         this.audioPlayerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
             @Override
@@ -57,7 +53,7 @@ public class PlayerManager {
                                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(track.getDuration())),
                                 TimeUnit.MILLISECONDS.toSeconds(track.getDuration()) -
                                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(track.getDuration()))), true);
-                channel.sendMessageEmbeds(embedBuilder.build()).queue();
+                embedConsumer.accept(embedBuilder);
             }
 
             @Override
@@ -78,7 +74,7 @@ public class PlayerManager {
                                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)),
                                 TimeUnit.MILLISECONDS.toSeconds(time) -
                                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time))), true);
-                channel.sendMessageEmbeds(embedBuilder.build()).queue();
+                embedConsumer.accept(embedBuilder);
             }
 
             @Override
